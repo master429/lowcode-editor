@@ -1,4 +1,4 @@
-import { Component, useEffect } from "react";
+import { Component } from "react";
 import { useComponentConfigStore } from "../stores/component-config";
 import { useComponetsStore } from "../stores/components";
 import React from "react";
@@ -7,30 +7,6 @@ export function EditArea() {
   const { components, addComponent } = useComponetsStore();
 
   const { componentConfig } = useComponentConfigStore();
-
-  //   useEffect(() => {
-  //     addComponent(
-  //       {
-  //         id: 222,
-  //         name: "Container",
-  //         props: {},
-  //         children: [],
-  //       },
-  //       1
-  //     );
-
-  //     addComponent(
-  //       {
-  //         id: 333,
-  //         name: "Button",
-  //         props: {
-  //           text: "无敌",
-  //         },
-  //         children: [],
-  //       },
-  //       222
-  //     );
-  //   }, []);
 
   function renderComponents(components: Component[]): React.ReactNode {
     return components.map((component: Component) => {
@@ -44,6 +20,8 @@ export function EditArea() {
         config.component,
         {
           key: component.id,
+          id: component.id,
+          name: component.name,
           ...config.defaultProps,
           ...component.props,
         },
