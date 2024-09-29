@@ -1,9 +1,10 @@
 import { Button as AntdButton } from "antd";
 import { CommonComponentProps } from "../../interface";
 
-const Button = ({ type, text, styles }: CommonComponentProps) => {
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+const Button = ({ id, type, text, styles, ...props }: CommonComponentProps) => {
   return (
-    <AntdButton type={type} style={styles}>
+    <AntdButton type={type} style={styles} {...props}>
       {text}
     </AntdButton>
   );

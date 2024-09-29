@@ -13,12 +13,18 @@ export interface ComponentSetter {
   [key: string]: any;
 }
 
+export interface ComponentEvent {
+  name: string;
+  label: string;
+}
+
 export interface ComponentConfig {
   name: string;
   defaultProps: Record<string, any>;
   desc: string;
   setter?: ComponentSetter[];
   stylesSetter?: ComponentSetter[];
+  events?: ComponentEvent[];
   dev: any;
   prod: any;
 }
@@ -74,7 +80,16 @@ export const useComponentConfigStore = create<State & Action>((set) => ({
           type: "inputNumber",
         },
       ],
-
+      events: [
+        {
+          name: "onClick",
+          label: "点击事件",
+        },
+        {
+          name: "onDoubleClick",
+          label: "双击事件",
+        },
+      ],
       desc: "按钮",
       dev: ButtonDev,
       prod: ButtonProd,
